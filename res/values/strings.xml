@@ -4,8 +4,11 @@
     <string name="app_name">MarathonApp</string>
     <string name="login_welcome">Welcome to MarathonApp</string>
     <string name="action_settings">Settings</string>
-	<string name="login_prompt">Please login</string>
+    <string name="login_prompt">Please login</string>
     <string name="register_prompt">Or register</string>
     <string name="login_button">Login!</string>
-	<string name="register_button">Register!</string>    
+    <string name="register_button">Register!</string>
+    <string name="title_activity_list_nonprofits">ListNonprofits</string>
+    <string name="hello_world">Hello world!</string>
+
 </resources>
