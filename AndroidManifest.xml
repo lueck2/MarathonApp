@@ -4,6 +4,13 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
+    <uses-permission
+       android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+   <uses-permission
+       android:name="android.permission.ACCESS_NETWORK_STATE"/>
+   <uses-permission
+       android:name="android.permission.INTERNET"/>
+   
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="19" />
@@ -23,8 +30,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.marathonapp.ListNonprofits"
+            android:name="com.example.marathonapp.ListNonprofitsActivity"
             android:label="@string/title_activity_list_nonprofits" >
+        </activity>
+        <activity
+            android:name="com.example.marathonapp.HomeActivity"
+            android:label="@string/title_activity_home" >
+        </activity>
+        <activity
+            android:name="com.example.marathonapp.UserInfoActivity"
+            android:label="@string/title_activity_user_info" >
+        </activity>
+        <activity
+            android:name="com.example.marathonapp.SkillsActivity"
+            android:label="@string/title_activity_skills" >
         </activity>
     </application>
 

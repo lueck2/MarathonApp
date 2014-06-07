@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${packageName}.${activityClass}" >
+
+    <Button
+        android:id="@+id/user_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="21dp"
+        android:layout_marginTop="20dp"
+        android:onClick="gotoUserInfo"
+        android:text="Edit My Info" />
+
+    <Button
+        android:id="@+id/nonprof_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/skills_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp"
+        android:onClick="gotoNonprofs"
+        android:text="View Non-Profits" />
+
+    <Button
+        android:id="@+id/skills_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/user_button"
+        android:layout_alignBottom="@+id/user_button"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        android:onClick="gotoSkills"
+        android:text="Edit My Skills" />
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/user_button"
+        android:layout_below="@+id/nonprof_button"
+        android:layout_marginTop="16dp" >
+    </ListView>
+
+</RelativeLayout>
