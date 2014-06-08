@@ -12,7 +12,6 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="21dp"
         android:layout_marginTop="20dp"
-        android:onClick="gotoUserInfo"
         android:text="Edit My Info" />
 
     <Button

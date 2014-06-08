@@ -1,0 +1,163 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/orange_gradient1"
+    android:orientation="vertical"
+    android:padding="20dp" >
+
+    <TextView
+        android:id="@+id/txtHomepage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:text="@string/txtHomepage"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageButton
+            android:id="@+id/user_button"
+            android:layout_width="71dp"
+            android:layout_height="66dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/usericon" />
+
+        <ImageButton
+            android:id="@+id/nonprof_button"
+            android:layout_width="71dp"
+            android:layout_height="64dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/org_button_purplepuzzle" 
+            android:onClick= "gotoNonprofs"/>
+
+        <ImageButton
+            android:id="@+id/skills_button"
+            android:layout_width="67dp"
+            android:layout_height="61dp"
+            android:onClick="gotoSkills"
+            android:src="@drawable/org_button_yellowpuzzle" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="30dp" >
+
+        <TextView
+            android:id="@+id/txtUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="@string/txtUser" />
+
+        <TextView
+            android:id="@+id/txtNonprof"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="@string/txtNonprof" />
+
+        <TextView
+            android:id="@+id/txtSkills"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txtSkills" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1f1f1f"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/txtEvents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txtMyEvents"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#ffffff"
+            android:color="#ffffff" />
+
+    </LinearLayout>
+    
+    <!-- Listview -->
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp" >
+    </ListView>
+     <TextView
+       android:id="@+id/label_lat_lng"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentLeft="true"
+       android:layout_alignParentTop="true"
+       android:text="@string/latlng"
+       android:textSize="20sp" />
+
+   <TextView
+       android:id="@+id/lat_lng"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignBaseline="@+id/label_lat_lng"
+       android:layout_marginLeft="10dp"
+       android:layout_toRightOf="@+id/label_lat_lng"
+       android:textIsSelectable="true"
+       android:textSize="20sp" />
+
+   <TextView
+       android:id="@+id/label_address"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentLeft="true"
+       android:layout_below="@+id/label_lat_lng"
+       android:text="@string/address"
+       android:textSize="20sp" />
+
+   <ProgressBar
+       android:id="@+id/address_progress"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_below="@id/lat_lng"
+       android:layout_centerHorizontal="true"
+       android:indeterminate="true"
+       android:visibility="gone" />
+
+   <TextView
+       android:id="@+id/address"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_toRightOf="@+id/label_address"
+       android:layout_alignBaseline="@+id/label_address"
+       android:layout_below="@+id/lat_lng"
+       android:layout_marginLeft="10dp"
+       android:textSize="20sp"
+       android:textIsSelectable="true"/>
+
+    <Button
+       android:id="@+id/get_address_button"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignBottom="@+id/text_connection_state"
+       android:layout_alignRight="@+id/get_location_button"
+       android:onClick="getAddress"
+       android:text="@string/get_address" />
+
+   <Button
+       android:id="@+id/get_location_button"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignBaseline="@+id/get_address_button"
+       android:layout_alignBottom="@+id/get_address_button"
+       android:layout_centerHorizontal="true"
+       android:onClick="getLocation"
+       android:text="@string/get_location" />
+
+</LinearLayout>

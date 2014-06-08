@@ -1,41 +1,27 @@
 package com.example.marathonapp;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.SQLException;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
-import android.os.Build;
 
-public class LoginActivity extends ActionBarActivity {
+public class LoginActivity extends Activity {
 
 	DBConnection connection;
-	private View fragmentView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		if (savedInstanceState == null) {
-			getSupportFragmentManager().beginTransaction()
-					.add(R.id.container, new PlaceholderFragment()).commit();
-		}
-		
+		setContentView(R.layout.marathon_app_login_screen);
 	}
 
 	@Override
@@ -114,17 +100,21 @@ public class LoginActivity extends ActionBarActivity {
 		return false;
 	}
 
+	public void openHome()
+	{
+		Intent intent = new Intent(this, HomeActivity.class);
+		startActivity(intent);
+		this.finish();
+	}
 	public void onLogin(View view) {
-		View rootView = getSupportFragmentManager().findFragmentById(
-				R.id.container).getView();
+		View rootView = findViewById(android.R.id.content);
 		String user = ((EditText) rootView.findViewById(R.id.login_email))
 				.getText().toString();
 		String password = ((EditText) rootView
 				.findViewById(R.id.login_password)).getText().toString();
 		// validate login info via webserver
 		if (validate(user, password)) {
-			Intent intent = new Intent(this, HomeActivity.class);
-			startActivity(intent);
+			openHome();
 		}
 	}
 
@@ -132,7 +122,6 @@ public class LoginActivity extends ActionBarActivity {
 		boolean result=false;
 		if(passwordConfirm.equals(password))
 		{
-			
 			ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
 			NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
@@ -146,10 +135,8 @@ public class LoginActivity extends ActionBarActivity {
 				Statement st = connection.getConnection().createStatement();
 				ResultSet rs = st.executeQuery(sql);
 				String uname = "";
-				String pword ="";
 				while (rs.next()) {
 					 uname = rs.getString("username");
-					 pword = rs.getString("password");
 				 }
 				
 				rs.close();
@@ -168,8 +155,7 @@ public class LoginActivity extends ActionBarActivity {
 	}
 
 	public void onRegister(View view) {
-		View rootView = getSupportFragmentManager().findFragmentById(
-				R.id.container).getView();
+		View rootView = findViewById(android.R.id.content);
 		String user = ((EditText) rootView.findViewById(R.id.register_email))
 				.getText().toString();
 		String password = ((EditText) rootView
@@ -178,25 +164,7 @@ public class LoginActivity extends ActionBarActivity {
 				.findViewById(R.id.register_password_confirm)).getText()
 				.toString();
 		if ( userCreate(user, password, passwordConfirm, "","","")) {
-			Intent intent = new Intent(this, HomeActivity.class);
-			startActivity(intent);
-		}
-	}
-
-	/**
-	 * A placeholder fragment containing a simple view.
-	 */
-	public static class PlaceholderFragment extends Fragment {
-
-		public PlaceholderFragment() {
-		}
-
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_main, container,
-					false);
-			return rootView;
+			openHome();
 		}
 	}
 }

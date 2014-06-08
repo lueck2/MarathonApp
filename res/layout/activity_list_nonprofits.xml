@@ -3,5 +3,8 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/orange_gradient1"
+    
     tools:context="com.example.marathonapp.ListNonprofitsActivity"
-    tools:ignore="MergeRootFrame" />
+    tools:ignore="MergeRootFrame" 
+    />
