@@ -1,5 +1,6 @@
 <resources>
 	
+    <!-- The following are strings used in the login screen -->
     <string name="app_name">MarathonApp</string>
     <string name="login_welcome">Welcome to MarathonApp!</string>
  	<string name="txtDescription">Get matched up with volunteering opportunities that meet your skills and interests. Allow us to help you help others.</string>
@@ -10,5 +11,11 @@
    	<string name="txtForgotPassword">Forgot my password</string> 
     <string name="register_button"></string>
     <!-- Note: there aren't strings for the login and register buttons because they're image buttons -->
-
+    
+    <!-- The following are strings used in the homepage screen -->
+    <string name="txtHomepage">MarathonApp Home</string>
+	<string name ="txtUser">My Profile</string>
+	<string name="txtNonprof">Organizations</string>
+	<string name="txtSkills">My Skills</string>
+	<string name="txtMyEvents">My Upcoming Events</string>
 </resources>

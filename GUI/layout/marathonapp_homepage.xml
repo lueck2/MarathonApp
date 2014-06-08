@@ -1,0 +1,95 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/orangeGradient1"
+    android:orientation="vertical"
+    android:padding="20dp" >
+
+    <TextView
+        android:id="@+id/txtHomepage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:text="@string/txtHomepage"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageButton
+            android:id="@+id/user_button"
+            android:layout_width="71dp"
+            android:layout_height="66dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/usericon" />
+
+        <ImageButton
+            android:id="@+id/nonprof_button"
+            android:layout_width="71dp"
+            android:layout_height="64dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/org_button_purplepuzzle" />
+
+        <ImageButton
+            android:id="@+id/skills_button"
+            android:layout_width="67dp"
+            android:layout_height="61dp"
+            android:src="@drawable/org_button_yellowPuzzle" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="30dp" >
+
+        <TextView
+            android:id="@+id/txtUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="@string/txtUser" />
+
+        <TextView
+            android:id="@+id/txtNonprof"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="@string/txtNonprof" />
+
+        <TextView
+            android:id="@+id/txtSkills"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txtSkills" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1f1f1f"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/txtEvents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txtMyEvents"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#ffffff"
+            android:color="#ffffff" />
+
+    </LinearLayout>
+    
+    <!-- Listview -->
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp" >
+    </ListView>
+
+</LinearLayout>
