@@ -28,13 +28,12 @@ public class DBConnection {
 			url = "jdbc:postgresql://ec2-107-20-234-127.compute-1.amazonaws.com:5432/d3sbq4b41pjrid"
 					+ "?sslfactory=org.postgresql.ssl.NonValidatingFactory"
 					+ "&ssl=true";
-			Connection connection;
 			try {
 				connection = DriverManager.getConnection(url, USER, PASSWORD);
 
 				System.out.println(" Made a connection with the database");
 
-				connection.close();
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

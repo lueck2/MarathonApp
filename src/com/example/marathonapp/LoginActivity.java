@@ -1,5 +1,6 @@
 package com.example.marathonapp;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -8,9 +9,11 @@ import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.database.SQLException;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,11 +35,7 @@ public class LoginActivity extends ActionBarActivity {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
-		ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-
-		NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-		connection = new DBConnection(networkInfo);
-
+		
 	}
 
 	@Override
@@ -59,25 +58,60 @@ public class LoginActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	private boolean validate(String user, String password) {
-		String sql = "SELECT username, password from users where username ="
-				+ user;
-		
+	private boolean validate(String user, String password) throws SQLException{
+		String sql = "SELECT count(*) AS count from users where username=\'"+user+"\' and  password = \'"+password+"\'";
+		ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+		NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+		connection = new DBConnection(networkInfo);
+
 		try {
 			Statement st = connection.getConnection().createStatement();
 			ResultSet rs = st.executeQuery(sql);
-			while (rs.next()) {
-				String uname = rs.getString("username");
-				String pword = rs.getString("password");
-			}
+			
+			int size=0;
+			
+			rs.next();
+			size=rs.getInt("count");
 			rs.close();
 			st.close();
-	//		return true;
+			connection.getConnection().close();
+			if(size>=1)
+			{
+				return true;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
-//			return false;
-		} 
-		return true;
+		}
+		return false;
+	}
+	
+	private boolean validate(String user){
+		String sql = "SELECT count(*) AS count from users where username=\'"+user+"\'";
+		ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+		NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+		connection = new DBConnection(networkInfo);
+
+		try {
+			Statement st = connection.getConnection().createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			
+			int size=0;
+			
+			rs.next();
+			size=rs.getInt("count");
+			rs.close();
+			st.close();
+			connection.getConnection().close();
+			if(size>=1)
+			{
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 	public void onLogin(View view) {
@@ -94,9 +128,43 @@ public class LoginActivity extends ActionBarActivity {
 		}
 	}
 
-	public boolean userCreate(String user, String password) {
-		return true;
+	public boolean userCreate(String user, String password, String passwordConfirm, String name, String email, String phone) {
+		boolean result=false;
+		if(passwordConfirm.equals(password))
+		{
+			
+			ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
+			NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+			connection = new DBConnection(networkInfo);
+
+			try {
+				String sql = "INSERT INTO users (username, password, name, email, phone)"+
+						" VALUES (\'"+user+"\', \'"+password+"\', \'"+name+"\', \'"+email+"\', \'"+phone+"\')"+
+						"RETURNING username, password";
+				System.out.println(sql);
+				Statement st = connection.getConnection().createStatement();
+				ResultSet rs = st.executeQuery(sql);
+				String uname = "";
+				String pword ="";
+				while (rs.next()) {
+					 uname = rs.getString("username");
+					 pword = rs.getString("password");
+				 }
+				
+				rs.close();
+				st.close();
+				connection.getConnection().close();
+
+				if(validate(uname))
+				{
+					result = true;
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
 	}
 
 	public void onRegister(View view) {
@@ -109,7 +177,7 @@ public class LoginActivity extends ActionBarActivity {
 		String passwordConfirm = ((EditText) rootView
 				.findViewById(R.id.register_password_confirm)).getText()
 				.toString();
-		if (password.equals(passwordConfirm) && userCreate(user, password)) {
+		if ( userCreate(user, password, passwordConfirm, "","","")) {
 			Intent intent = new Intent(this, HomeActivity.class);
 			startActivity(intent);
 		}
