@@ -1,0 +1,104 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/orangeGradient1"
+    android:orientation="vertical"
+    android:padding="25dp"
+    android:visibility="visible" >
+	
+ 	<!-- The Welcome Text at the very top -->
+    <TextView
+        android:id="@+id/login_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingTop="0dp"
+        android:text="@string/login_welcome"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#1F1F14"
+        android:textStyle="bold" />
+    
+	<!-- The description text right underneath the welcome text -->
+    <TextView
+        android:id="@+id/txtDescription"
+        android:layout_width="267dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:text="@string/txtDescription" />
+	
+    <!-- The email login text view -->
+    <TextView
+        android:id="@+id/login_prompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login_prompt" />
+	<!-- The email login text field -->
+    <EditText
+        android:id="@string/login_email"
+        android:layout_width="fill_parent"
+        android:layout_height="34dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/TextFieldBorder"
+        android:ems="10"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:color="#ffffff" />
+	
+    <!-- The password prompt -->
+    <TextView
+        android:id="@+id/password_prompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/password_prompt" />
+
+    <!-- The password text field -->
+    <EditText
+        android:id="@+id/login_password"
+        android:layout_width="fill_parent"
+        android:layout_height="34dp"
+        android:background="@drawable/TextFieldBorder" 
+        android:ems="10"
+        android:inputType="textPassword"
+        android:paddingTop="50dp" >
+
+        <requestFocus />
+    </EditText>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp" >
+        
+        <!-- Login button -->
+        <ImageButton
+            android:id="@+id/button1"
+            android:layout_width="122dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/loginbutton"
+            android:text="@string/login_button" 
+        	android:onClick="onLogin" />
+		
+        <!-- Register button -->
+
+        <ImageButton
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:onClick="onRegister"
+            android:src="@drawable/registerButton2"
+            android:text="@string/register_button" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtForgotPassword"
+        android:layout_width="146dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:text="@string/txtForgotPassword" />
+
+</LinearLayout>

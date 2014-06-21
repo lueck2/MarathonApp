@@ -1,0 +1,14 @@
+<resources>
+	
+    <string name="app_name">MarathonApp</string>
+    <string name="login_welcome">Welcome to MarathonApp!</string>
+ 	<string name="txtDescription">Get matched up with volunteering opportunities that meet your skills and interests. Allow us to help you help others.</string>
+    <string name="login_prompt">e-mail:</string>
+    <string name="login_email">name@email.com</string>
+    <string name="password_prompt">password:</string>
+    <string name="login_password">password</string>
+   	<string name="txtForgotPassword">Forgot my password</string> 
+    <string name="register_button"></string>
+    <!-- Note: there aren't strings for the login and register buttons because they're image buttons -->
+
+</resources>
